@@ -1,5 +1,5 @@
 <div class="modal-header">
-  <h4 class="modal-title" id="modal-basic-title">Simple modal</h4>
+  <h6 class="modal-title" id="modal-basic-title">Register</h6>
   <button type="button" class="close" aria-label="Close" (click)="activeModal.close(null)">
     <span aria-hidden="true">&times;</span>
   </button>
@@ -14,42 +14,63 @@
       </div>
     </div>
     <div class="col-9">
-      <form>
+      <form [formGroup]="registerForm">
         <div class="row form-group">
           <div class="col">
-            <input type="text" class="form-control" id="firstNameInput" placeholder="First name">
+            <input type="text" formControlName="firstName" class="form-control" id="firstNameInput" placeholder="First name">
           </div>
           <div class="col">
-            <input type="text" class="form-control" id="lastNameInput" placeholder="Last name">
+            <input type="text" formControlName="lastName" class="form-control" id="lastNameInput" placeholder="Last name">
           </div>
         </div>
         <div class="form-group">
-          <input type="text" class="form-control" id="emailInput" placeholder="Email">
+          <input type="email" formControlName="email" class="form-control" id="emailInput" placeholder="Email">
         </div>
         <div class="form-group">
-          <input type="text" class="form-control" id="mobileInput" placeholder="eg. 9673412006">
+          <input type="text" formControlName="mobile" class="form-control" id="mobileInput" placeholder="eg. 9673412006">
         </div>
         <div class="form-group">
-          <ng5-slider [(value)]="value" [options]="options"></ng5-slider>
+          <label>Age</label>
+          <ng5-slider formControlName="age" [options]="options"></ng5-slider>
         </div>
         <div class="form-group">
-            <select id="inputState" class="form-control">
-                
-                <option [value]="state" *ngFor="let state of stateList">{{state}}</option>
-              </select>
+          <select id="inputState" formControlName="state" class="form-control">
+            <option [value]="state" *ngFor="let state of stateList">{{state}}</option>
+          </select>
         </div>
         <div class="form-group">
-            <select id="inputState" class="form-control">
-                <option [value]="country" *ngFor="let country of countryList">{{country}}</option>
-              </select>
+          <select id="inputState" formControlName="country" class="form-control">
+            <option [value]="country" *ngFor="let country of countryList">{{country}}</option>
+          </select>
         </div>
         <div class="form-group">
-            <select id="inputState" class="form-control">
-                <option [value]="address" *ngFor="let address of addressType">{{address}}</option>
-              </select>
+          <select id="inputState" formControlName="addressType" class="form-control">
+            <option [value]="address" *ngFor="let address of addressType">{{address}}</option>
+          </select>
+        </div>
+        <div class="form-group" *ngIf="registerForm.controls['addressType'].value=='home'">
+          <input type="text" formControlName="address1" class="form-control" id="address2" placeholder="Address 1"> <br/>
+          <input type="text" formControlName="address2" class="form-control" id="address1" placeholder="Address 2">
+        </div>
+        <div class="form-group" *ngIf="registerForm.controls['addressType'].value=='company'">
+          <input type="text" formControlName="address1" class="form-control" id="address2" placeholder="Company Address 1"><br/>
+          <input type="text" formControlName="address2" class="form-control" id="address1" placeholder="Company Address 2">
+        </div>
+        <div class="form-group">
+          <input type="text" autocomplete="off" formControlName="interest" class="form-control" (keyup.enter)="addTag()" id="interestInput" placeholder="tags">
+        </div>
+        <div class="form-group" id="tagList">
+            <div class="tags" *ngFor="let tag of registerForm.controls['tags'].value">
+              <p (click)="removeItem(tag)">{{tag}} <i  class="fa fa-times"></i></p>
+            </div>
+        </div>
+        <br/>
+        <div class="form-group" id="buttonSection">
+          <button id="cancel" class="btn btn-secondary">Cancel</button>
+          <button id="submit" name="submit" class="btn btn-primary" (click)="submit()">Submit</button>
         </div>
       </form>
     </div>
   </div>
-  <!-- <button (click)="passBack()" type="submit" class="btn btn-primary w-100">Pass back</button> -->
+
 </div>
