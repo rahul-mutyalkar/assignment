@@ -7,6 +7,7 @@ import { AppComponent } from './app.component';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { HomePageComponent } from './home-page/home-page.component';
 import { RegisterComponent } from './register/register.component';
+import { Ng5SliderModule } from 'ng5-slider';
 
 
 @NgModule({
@@ -18,6 +19,7 @@ import { RegisterComponent } from './register/register.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
+    Ng5SliderModule,
     NgbModule
   ],
   providers: [],

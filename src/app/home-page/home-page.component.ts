@@ -17,10 +17,14 @@ export class HomePageComponent implements OnInit {
   openModal() {
     const modalRef = this.modalService.open(RegisterComponent);
     // modalRef.componentInstance.user = {random:Math.random()};
-    modalRef.result.then((result) => {
-      console.log('modalRef.result : ',result);
-      if (result) {
-      }
-      });
+    
+      modalRef.result.then((result) => {
+        console.log('modalRef.result : ',result);
+        if (result) {
+        }
+        }).catch((error)=>{
+          console.log('error : ',error);
+        });
+  
   }
 }
