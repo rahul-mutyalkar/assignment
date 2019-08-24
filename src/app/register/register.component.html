@@ -8,12 +8,17 @@
   <!-- <input [(ngModel)]="user.name" type="text">
   <input [(ngModel)]="user.age" type="number"> -->
   <div class="row">
-    <div class="col-3">
-      <div id="profileImage">
-        <img src="https://image.flaticon.com/icons/png/512/64/64096.png" alt="">
+    <div class="col-4">
+      <div id="profileImage" *ngIf="registerForm && registerForm.value">
+        <img [src]="registerForm.value.profilePic || 'https://image.flaticon.com/icons/png/512/64/64096.png'" alt="">
+        <span *ngIf="profilePicError==true">Image size should be 310*325</span>
+        <button id="imagePicker" type="file" (click)="fileInput.click()">upload your photo</button>
+        <span id="fileInput">
+				<input type="file" #fileInput accept="image/*" (change)="changeProfilePic($event)" />
+			</span>
       </div>
     </div>
-    <div class="col-9">
+    <div class="col-offset-1 col-7">
       <form [formGroup]="registerForm">
         <div class="row form-group">
           <div class="col">
@@ -49,20 +54,25 @@
           </select>
         </div>
         <div class="form-group" *ngIf="registerForm.controls['addressType'].value=='home'">
-          <input type="text" formControlName="address1" class="form-control" id="address2" placeholder="Address 1"> <br/>
+          <input type="text" formControlName="address1" class="form-control" id="address2" placeholder="Address 1">
+          <br/>
           <input type="text" formControlName="address2" class="form-control" id="address1" placeholder="Address 2">
         </div>
         <div class="form-group" *ngIf="registerForm.controls['addressType'].value=='company'">
-          <input type="text" formControlName="address1" class="form-control" id="address2" placeholder="Company Address 1"><br/>
+          <input type="text" formControlName="address1" class="form-control" id="address2" placeholder="Company Address 1">
+          <br/>
           <input type="text" formControlName="address2" class="form-control" id="address1" placeholder="Company Address 2">
         </div>
         <div class="form-group">
-          <input type="text" autocomplete="off" formControlName="interest" class="form-control" (keyup.enter)="addTag()" id="interestInput" placeholder="tags">
+          <input type="text" autocomplete="off" formControlName="interest" class="form-control" (keyup.enter)="addTag()" id="interestInput"
+            placeholder="tags">
         </div>
         <div class="form-group" id="tagList">
-            <div class="tags" *ngFor="let tag of registerForm.controls['tags'].value">
-              <p (click)="removeItem(tag)">{{tag}} <i  class="fa fa-times"></i></p>
-            </div>
+          <div class="tags" *ngFor="let tag of registerForm.controls['tags'].value">
+            <p (click)="removeItem(tag)">{{tag}}
+              <i class="fa fa-times"></i>
+            </p>
+          </div>
         </div>
         <br/>
         <div class="form-group" id="buttonSection">

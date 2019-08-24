@@ -1,10 +1,12 @@
-import {Component, OnInit, Input} from '@angular/core';
+import {Component, OnInit, Input,ElementRef,ViewChild} from '@angular/core';
 import {NgbActiveModal} from '@ng-bootstrap/ng-bootstrap';
 import {Options} from 'ng5-slider';
 import { FormGroup, FormControl, Validators, FormBuilder, FormArray } from '@angular/forms';
+import {DomSanitizer} from '@angular/platform-browser';
 
 @Component({selector: 'app-register', templateUrl: './register.component.html', styleUrls: ['./register.component.scss']})
 export class RegisterComponent implements OnInit {
+	@ViewChild('fileInput') el: ElementRef;
 
   @Input()user;
   stateList = [
@@ -52,8 +54,9 @@ export class RegisterComponent implements OnInit {
     enforceRange: false,
     showSelectionBar: true
   };
+  profilePicError = false;
   registerForm:FormGroup;
-  constructor(public activeModal : NgbActiveModal,private fb: FormBuilder) {}
+  constructor(public activeModal : NgbActiveModal,private fb: FormBuilder,private sanitizer: DomSanitizer) {}
 
   ngOnInit() {
     this.initForm();
@@ -63,6 +66,7 @@ export class RegisterComponent implements OnInit {
   {
     this.registerForm = this.fb.group({
       firstName:[''],
+      profilePic:[''],
       lastName:[''],
       mobile:[''],
       email:[''],
@@ -102,12 +106,12 @@ export class RegisterComponent implements OnInit {
   this.registerForm.patchValue({tags:tagList});
   console.log('removeItem tagList : ',tagList,tagIndex)
   }
+
   addTag()
   {
     const interest = this.registerForm.controls['interest'].value;
     if(interest && interest.length>0)
     {
-      // console.log('addTag() : ',this.registerForm.controls['interest'].value);
       var tagList = this.registerForm.controls['tags'].value;
       console.log('tags : ',tagList);
       tagList.push(interest);
@@ -116,5 +120,41 @@ export class RegisterComponent implements OnInit {
     }
     
   }
+  changeProfilePic(event)
+  {
+    const file = event.target.files[0];
+   const finalPath = this.sanitizer.bypassSecurityTrustResourceUrl(URL.createObjectURL(file));
+   console.log('finalPath : ',finalPath);
+   this.getFileDimension(file).then(({width, height}) => {
+    console.log(width, height);
+    if(width<=325 && height<=310)
+    {
+      this.profilePicError = false;
+    }
+    else{
+      this.profilePicError = true;
+    }
+    });
+    this.registerForm.patchValue({profilePic:finalPath});
+  }
 
+  getFileDimension(file)
+  {
+    return new Promise((resolve, reject) => {
+      try {
+          let img = new Image()
+  
+          img.onload = () => {
+              const width  = img.naturalWidth,
+                    height = img.naturalHeight
+              window.URL.revokeObjectURL(img.src)
+              return resolve({width, height})
+          }
+  
+          img.src = window.URL.createObjectURL(file)
+      } catch (exception) {
+          return reject(exception)
+      }
+  })
+  }
 }
