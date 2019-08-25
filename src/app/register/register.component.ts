@@ -3,6 +3,7 @@ import {NgbActiveModal} from '@ng-bootstrap/ng-bootstrap';
 import {Options} from 'ng5-slider';
 import { FormGroup, FormControl, Validators, FormBuilder, FormArray } from '@angular/forms';
 import {DomSanitizer} from '@angular/platform-browser';
+import { UserService } from '../services/user.service';
 
 @Component({selector: 'app-register', templateUrl: './register.component.html', styleUrls: ['./register.component.scss']})
 export class RegisterComponent implements OnInit {
@@ -56,7 +57,12 @@ export class RegisterComponent implements OnInit {
   };
   profilePicError = false;
   registerForm:FormGroup;
-  constructor(public activeModal : NgbActiveModal,private fb: FormBuilder,private sanitizer: DomSanitizer) {}
+  constructor(
+    public activeModal : NgbActiveModal,
+    private fb: FormBuilder,
+    private sanitizer: DomSanitizer,
+    private userService:UserService
+  ) {}
 
   ngOnInit() {
     this.initForm();
@@ -76,7 +82,6 @@ export class RegisterComponent implements OnInit {
       addressType:['choose address'],
       address1:[''],
       address2:[''],
-      
       interest:[''],
       tags:[['cricket','hockey']]
   });
@@ -89,7 +94,18 @@ export class RegisterComponent implements OnInit {
   }
   submit()
   {
-    console.log('this.registerForm : ',this.registerForm.value);
+    console.log('this.registerForm : ',this.registerForm);
+    const finalObj = this.registerForm.value;
+    if(this.registerForm.valid==true)
+    {
+      finalObj.id = (Math.random()*10000).toString();
+        console.log('finalObj : ',finalObj,this.registerForm.status);
+        this.userService.registerUser(finalObj).subscribe((response)=>{
+          console.log('response : ',response)
+        },(error)=>{
+          console.log('error : ',error);
+        })
+    }
   }
   removeItem(item)
   {
@@ -123,6 +139,11 @@ export class RegisterComponent implements OnInit {
   changeProfilePic(event)
   {
     const file = event.target.files[0];
+    console.log('changeProfilePic file : ',file);
+    if(file==undefined)
+    {
+      return false;
+    }
    const finalPath = this.sanitizer.bypassSecurityTrustResourceUrl(URL.createObjectURL(file));
    console.log('finalPath : ',finalPath);
    this.getFileDimension(file).then(({width, height}) => {
@@ -143,18 +164,18 @@ export class RegisterComponent implements OnInit {
     return new Promise((resolve, reject) => {
       try {
           let img = new Image()
-  
           img.onload = () => {
               const width  = img.naturalWidth,
                     height = img.naturalHeight
               window.URL.revokeObjectURL(img.src)
               return resolve({width, height})
           }
-  
           img.src = window.URL.createObjectURL(file)
       } catch (exception) {
           return reject(exception)
       }
-  })
+  });
   }
+
+  
 }

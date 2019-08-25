@@ -1,0 +1,281 @@
+{
+  "users": [
+    {
+      "firstName": "Rahul",
+      "lastName": "Mutyalkar",
+      "profilePic": "",
+      "mobile": "9673412006",
+      "email": "rahulmutyalkar@gmail.com",
+      "age": 10,
+      "state": "Maharashtra",
+      "country": "India",
+      "addressType": "home",
+      "address1": "Near Valdhuni Bridge, Kalyan Ambernath Road",
+      "address2": "Regency Plaza kalyan",
+      "interest": "movies",
+      "tags": [
+        "cricket",
+        "hockey"
+      ],
+      "id": "5966.329100363737"
+    },
+    {
+      "firstName": "Rahul",
+      "lastName": "Mutyalkar",
+      "profilePic": "",
+      "mobile": "9673412006",
+      "email": "rahulmutyalkar@gmail.com",
+      "age": 10,
+      "state": "Maharashtra",
+      "country": "India",
+      "addressType": "home",
+      "address1": "Near Valdhuni Bridge, Kalyan Ambernath Road",
+      "address2": "Regency Plaza kalyan",
+      "interest": "acts",
+      "tags": [
+        "cricket",
+        "hockey",
+        "movies"
+      ],
+      "id": "6135.144627767726"
+    },
+    {
+      "firstName": "Rahul",
+      "lastName": "Mutyalkar",
+      "profilePic": "",
+      "mobile": "9673412006",
+      "email": "rahulmutyalkar@gmail.com",
+      "age": 10,
+      "state": "Maharashtra",
+      "country": "India",
+      "addressType": "home",
+      "address1": "Near Valdhuni Bridge, Kalyan Ambernath Road",
+      "address2": "Regency Plaza kalyan",
+      "interest": "web series",
+      "tags": [
+        "cricket",
+        "hockey",
+        "movies",
+        "acts"
+      ],
+      "id": "1322.3041799664625"
+    },
+    {
+      "firstName": "Rahul",
+      "lastName": "Mutyalkar",
+      "profilePic": "",
+      "mobile": "9673412006",
+      "email": "rahulmutyalkar@gmail.com",
+      "age": 10,
+      "state": "Maharashtra",
+      "country": "India",
+      "addressType": "home",
+      "address1": "Near Valdhuni Bridge, Kalyan Ambernath Road",
+      "address2": "Regency Plaza kalyan",
+      "interest": "",
+      "tags": [
+        "cricket",
+        "hockey",
+        "movies",
+        "acts",
+        "web series"
+      ],
+      "id": "2455.453286143232"
+    },
+    {
+      "firstName": "Rahul",
+      "lastName": "Mutyalkar",
+      "profilePic": "",
+      "mobile": "9673412006",
+      "email": "rahulmutyalkar@gmail.com",
+      "age": 10,
+      "state": "Maharashtra",
+      "country": "India",
+      "addressType": "home",
+      "address1": "Near Valdhuni Bridge, Kalyan Ambernath Road",
+      "address2": "Regency Plaza kalyan",
+      "interest": "",
+      "tags": [
+        "cricket",
+        "hockey",
+        "movies",
+        "acts",
+        "web series"
+      ],
+      "id": "9142.050692108594"
+    },
+    {
+      "firstName": "Rahul",
+      "lastName": "Mutyalkar",
+      "profilePic": "",
+      "mobile": "9673412006",
+      "email": "rahulmutyalkar@gmail.com",
+      "age": 10,
+      "state": "Maharashtra",
+      "country": "India",
+      "addressType": "home",
+      "address1": "Near Valdhuni Bridge, Kalyan Ambernath Road",
+      "address2": "Regency Plaza kalyan",
+      "interest": "",
+      "tags": [
+        "cricket",
+        "hockey",
+        "movies",
+        "acts",
+        "web series"
+      ],
+      "id": "3798.2138522565247"
+    },
+    {
+      "firstName": "Rahul",
+      "lastName": "Mutyalkar",
+      "profilePic": {
+        "changingThisBreaksApplicationSecurity": "blob:http://localhost:4200/8767fad6-0aff-429a-bb1c-f79a0c2e5dbc"
+      },
+      "mobile": "9673412006",
+      "email": "rahulmutyalkar@gmail.com",
+      "age": 10,
+      "state": "Maharashtra",
+      "country": "India",
+      "addressType": "home",
+      "address1": "Near Valdhuni Bridge, Kalyan Ambernath Road",
+      "address2": "Regency Plaza kalyan",
+      "interest": "",
+      "tags": [
+        "cricket",
+        "hockey",
+        "movies",
+        "acts",
+        "web series"
+      ],
+      "id": "9889.30876411316"
+    },
+    {
+      "firstName": "Vijay",
+      "lastName": "Nandedkar",
+      "profilePic": {
+        "changingThisBreaksApplicationSecurity": "blob:http://localhost:4200/8767fad6-0aff-429a-bb1c-f79a0c2e5dbc"
+      },
+      "mobile": "9673412006",
+      "email": "rahulmademachine@gmail.com",
+      "age": 10,
+      "state": "Maharashtra",
+      "country": "India",
+      "addressType": "home",
+      "address1": "Near Valdhuni Bridge, Kalyan Ambernath Road",
+      "address2": "Regency Plaza kalyan",
+      "interest": "",
+      "tags": [
+        "cricket",
+        "hockey",
+        "movies",
+        "acts",
+        "web series"
+      ],
+      "id": "4410.577923846148"
+    },
+    {
+      "firstName": "Rahul",
+      "lastName": "Mutyalkar",
+      "profilePic": "",
+      "mobile": "9673412006",
+      "email": "rahulmutyalkar2508@gmail.com",
+      "age": 29,
+      "state": "Maharashtra",
+      "country": "India",
+      "addressType": "home",
+      "address1": "Near Valdhuni Bridge, Kalyan Ambernath Road",
+      "address2": "Regency Plaza kalyan",
+      "interest": "ppp",
+      "tags": [
+        "cricket",
+        "hockey"
+      ],
+      "id": "4879.662962108777"
+    },
+    {
+      "firstName": "Rahul",
+      "lastName": "Mutyalkar",
+      "profilePic": "",
+      "mobile": "9673412006",
+      "email": "rahulmutyalkar2508@gmail.com",
+      "age": 29,
+      "state": "Maharashtra",
+      "country": "India",
+      "addressType": "home",
+      "address1": "Near Valdhuni Bridge, Kalyan Ambernath Road",
+      "address2": "Regency Plaza kalyan",
+      "interest": "qqqq",
+      "tags": [
+        "cricket",
+        "hockey",
+        "ppp"
+      ],
+      "id": "7815.6359881651215"
+    },
+    {
+      "firstName": "Rahul",
+      "lastName": "Mutyalkar",
+      "profilePic": "",
+      "mobile": "9673412006",
+      "email": "rahulmutyalkar2508@gmail.com",
+      "age": 29,
+      "state": "Maharashtra",
+      "country": "India",
+      "addressType": "home",
+      "address1": "Near Valdhuni Bridge, Kalyan Ambernath Road",
+      "address2": "Regency Plaza kalyan",
+      "interest": "",
+      "tags": [
+        "cricket",
+        "hockey",
+        "ppp",
+        "qqqq"
+      ],
+      "id": "1687.7646734681528"
+    },
+    {
+      "firstName": "Rahul",
+      "lastName": "Mutyalkar",
+      "profilePic": "",
+      "mobile": "9673412006",
+      "email": "rahulmutyalkar2508@gmail.com",
+      "age": 29,
+      "state": "Maharashtra",
+      "country": "India",
+      "addressType": "home",
+      "address1": "Near Valdhuni Bridge, Kalyan Ambernath Road",
+      "address2": "Regency Plaza kalyan",
+      "interest": "aaaa",
+      "tags": [
+        "cricket",
+        "hockey",
+        "ppp",
+        "qqqq"
+      ],
+      "id": "1767.7376343835083"
+    },
+    {
+      "firstName": "Rahul",
+      "lastName": "Mutyalkar",
+      "profilePic": "",
+      "mobile": "9673412006",
+      "email": "rahulmutyalkar2508@gmail.com",
+      "age": 29,
+      "state": "Maharashtra",
+      "country": "India",
+      "addressType": "home",
+      "address1": "Near Valdhuni Bridge, Kalyan Ambernath Road",
+      "address2": "Regency Plaza kalyan",
+      "interest": "ppppp",
+      "tags": [
+        "cricket",
+        "hockey",
+        "ppp",
+        "qqqq",
+        "aaaa"
+      ],
+      "id": "9538.01744780765"
+    }
+  ]
+}

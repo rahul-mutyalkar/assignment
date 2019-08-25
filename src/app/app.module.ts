@@ -9,14 +9,18 @@ import { HomePageComponent } from './home-page/home-page.component';
 import { RegisterComponent } from './register/register.component';
 import { Ng5SliderModule } from 'ng5-slider';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { UserService } from './services/user.service';
 
+import { HttpClientModule } from '@angular/common/http';
+import { EditProfileComponent } from './edit-profile/edit-profile.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     HomePageComponent,
-    RegisterComponent
+    RegisterComponent,
+    EditProfileComponent
   ],
   imports: [
     BrowserModule,
@@ -24,9 +28,10 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     ReactiveFormsModule,
     AppRoutingModule,
     Ng5SliderModule,
-    NgbModule
+    NgbModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [UserService],
   entryComponents:[RegisterComponent],
   bootstrap: [AppComponent]
 })

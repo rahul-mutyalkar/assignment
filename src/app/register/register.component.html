@@ -19,11 +19,11 @@
       </div>
     </div>
     <div class="col-offset-1 col-7">
-      <form [formGroup]="registerForm">
+      <form [formGroup]="registerForm" #ngForm="ngForm">
         <div class="row form-group">
           <div class="col">
             <input autocomplete="off" type="text" pattern="^[A-Za-z]+$" formControlName="firstName" class="form-control" id="firstNameInput" placeholder="First name">
-            <div class="alert"  *ngIf="!registerForm.controls['firstName'].valid && registerForm.controls['firstName'].touched">
+            <div class="alert"  *ngIf="ngForm.submitted || registerForm.controls['firstName'].touched">
                 <div [hidden]="!registerForm.controls['firstName'].hasError('required')">
                   first name is Required
                 </div>
