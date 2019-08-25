@@ -90,7 +90,8 @@ export class RegisterComponent implements OnInit {
       addressType:fields.addressType,
       address1:fields.address1,
       address2:fields.address2,
-      tags:fields.tags
+      tags:fields.tags,
+      newsLetter:fields.newsLetter
     })
   }
 
@@ -109,7 +110,8 @@ export class RegisterComponent implements OnInit {
       address1:[''],
       address2:[''],
       interest:[''],
-      tags:[['movies']]
+      tags:[['movies']],
+      newsLetter:[false]
   });
   }
 
