@@ -13,6 +13,8 @@ import { UserService } from './services/user.service';
 
 import { HttpClientModule } from '@angular/common/http';
 import { EditProfileComponent } from './edit-profile/edit-profile.component';
+import { HeaderComponent } from './header/header.component';
+import { FooterComponent } from './footer/footer.component';
 
 
 @NgModule({
@@ -20,7 +22,9 @@ import { EditProfileComponent } from './edit-profile/edit-profile.component';
     AppComponent,
     HomePageComponent,
     RegisterComponent,
-    EditProfileComponent
+    EditProfileComponent,
+    HeaderComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,
