@@ -6,7 +6,7 @@ import { EditProfileComponent } from './edit-profile/edit-profile.component';
 const routes: Routes = [
   {path:'',redirectTo:'home',pathMatch:'full'},
   {path:'home',component:HomePageComponent},
-  {path:'edit-profile',component:EditProfileComponent}
+  {path:'edit-profile/:id',component:EditProfileComponent}
 ];
 
 @NgModule({

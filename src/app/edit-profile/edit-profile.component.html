@@ -1,15 +1,18 @@
 <div class="row">
   <div class="col-4">
-
+    <div id="profileImage">
+      <img [src]="sanitizer.bypassSecurityTrustResourceUrl(userObj.profilePic) || 'https://image.flaticon.com/icons/png/512/64/64096.png'" alt="">
+      <span *ngIf="profilePicError==true">Image size should be 310*325</span>
+      <div id="buttonSection">
+        <button  class="btn btn-primary profileBtn" type="file" (click)="fileInput.click()">Edit photo</button>
+        <button class="btn btn-primary profileBtn" (click)="openModal()">Edit profile</button>
+        <span id="fileInput">
+        <input type="file" #fileInput accept="image/*" (change)="changeProfilePic($event)" />
+      </span>
+      </div>
+      
+    </div>
   </div>
   <div class="col-offset-1 col-7">
-    <div id="profileImage" *ngIf="registerForm && registerForm.value">
-      <img [src]="userObj.profilePic || 'https://image.flaticon.com/icons/png/512/64/64096.png'" alt="">
-      <span *ngIf="profilePicError==true">Image size should be 310*325</span>
-      <button id="imagePicker" type="file" (click)="fileInput.click()">upload your photo</button>
-      <span id="fileInput">
-      <input type="file" #fileInput accept="image/*" (change)="changeProfilePic($event)" />
-    </span>
-    </div>
   </div>
 </div>

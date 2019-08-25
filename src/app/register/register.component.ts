@@ -9,7 +9,7 @@ import { UserService } from '../services/user.service';
 export class RegisterComponent implements OnInit {
 	@ViewChild('fileInput') el: ElementRef;
 
-  @Input()user;
+  updateUserObj:any={};
   stateList = [
     "choose state",
     "Andhra Pradesh",
@@ -66,6 +66,32 @@ export class RegisterComponent implements OnInit {
 
   ngOnInit() {
     this.initForm();
+    this.userService.userSource.subscribe((data:any) => {
+      console.log('userSource : ', data);
+      if(data && data.id!=undefined)
+      {
+        this.updateUserObj = data;
+        this.updateFormFields(data);
+      }
+    },(error)=>{
+      // console.log('userSource error : ', error);
+    });
+  }
+  updateFormFields(fields){
+    this.registerForm.patchValue({
+      firstName:fields.firstName,
+      lastName:fields.lastName,
+      profilePic:fields.profilePic,
+      mobile:fields.mobile,
+      email:fields.email,
+      age:fields.age,
+      state:fields.state,
+      country:fields.country,
+      addressType:fields.addressType,
+      address1:fields.address1,
+      address2:fields.address2,
+      tags:fields.tags
+    })
   }
 
   initForm()
@@ -73,7 +99,7 @@ export class RegisterComponent implements OnInit {
     this.registerForm = this.fb.group({
       firstName:['',[Validators.required, Validators.maxLength(20)]],
       lastName:[''],
-      profilePic:[''],
+      profilePic:[null],
       mobile:[''],
       email:[''],
       age:[10],
@@ -83,7 +109,7 @@ export class RegisterComponent implements OnInit {
       address1:[''],
       address2:[''],
       interest:[''],
-      tags:[['cricket','hockey']]
+      tags:[['movies']]
   });
   }
 
@@ -98,14 +124,31 @@ export class RegisterComponent implements OnInit {
     const finalObj = this.registerForm.value;
     if(this.registerForm.valid==true)
     {
+      if(this.updateUserObj && this.updateUserObj.id !=undefined)
+      {
+        finalObj.id=this.updateUserObj.id;
+        this.editProfile(finalObj);
+      }
       finalObj.id = (Math.random()*10000).toString();
         console.log('finalObj : ',finalObj,this.registerForm.status);
         this.userService.registerUser(finalObj).subscribe((response)=>{
           console.log('response : ',response)
+          this.activeModal.close(response);
+          this.userService.updateUser(response)
         },(error)=>{
           console.log('error : ',error);
         })
     }
+  }
+
+  editProfile(userObj)
+  {
+    this.userService.editUserProfile(userObj).subscribe((response)=>{
+      this.activeModal.close(response);
+      this.userService.updateUser(response)
+    },(error)=>{
+      this.activeModal.close(null);
+    })
   }
   removeItem(item)
   {
@@ -144,7 +187,7 @@ export class RegisterComponent implements OnInit {
     {
       return false;
     }
-   const finalPath = this.sanitizer.bypassSecurityTrustResourceUrl(URL.createObjectURL(file));
+    const finalPath = URL.createObjectURL(file);
    console.log('finalPath : ',finalPath);
    this.getFileDimension(file).then(({width, height}) => {
     console.log(width, height);

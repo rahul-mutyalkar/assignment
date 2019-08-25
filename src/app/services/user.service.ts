@@ -16,9 +16,14 @@ export class UserService {
     return this.http.post(environment.API_ENPOINT+'/users',user);
   }
 
-  editUserProfile()
+  getUser(userId)
   {
+    return this.http.get(environment.API_ENPOINT+'/users/'+userId);
+  }
 
+  editUserProfile(userObj)
+  {
+    return this.http.put(environment.API_ENPOINT+'/users/'+userObj.id,userObj);
   }
 
   updateUser(data)
